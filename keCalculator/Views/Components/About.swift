@@ -74,9 +74,10 @@ struct About: View {
                     AboutSplit()
                     
                     HStack {
-                        StrokeText(text: "Only use the latest version available at <Github page TBD>\n", width: 0.5, color: Color.black)
+                        StrokeText(text: "Only use the latest version available at:", width: 0.5, color: Color.black)
                         Spacer()
                     }
+                    Link("GitHub repository https://github.com/Qioosei/the-blacksmith-KE", destination: URL(string: "https://github.com/Qioosei/the-blacksmith-KE")!)
                     
                     
                 }
