@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  keCalculator
+
+  Created by Qioosei on 12/04/2022.
+  
+*/
+
+"main_title"    = "The Blacksmith";
+"main_power"    = "base power";
+"main_health"   = "base health";
+"main_armor"    = "base armor";
+"main_ig_power"    = "IG power";
+"main_ig_health"   = "IG health";
+"main_ig_armor"    = "IG armor";
+"main_level"    = "Lv.:";
+"main_offense"  = "OFFENSE";
+"main_defense"  = "DEFENSE";
+
+"Axe" = "Axe";
+"Sword" = "Sword";
+"Staff" = "Staff";
+"Bow" = "Bow";
+
+"Ice" = "Ice";
+"Fire" = "Fire";
+"Lightning" = "Lightning";
+"Holy" = "Holy";
+"Void" = "Void";
+"Royal" = "Royal";
+

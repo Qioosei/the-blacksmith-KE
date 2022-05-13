@@ -1,0 +1,284 @@
+[
+ {
+    "name": "Exploit Weakness",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "CC"
+},
+ {
+    "name": "Refreshing Rivals",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "CR"
+},
+ {
+    "name": "Armored Claws",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Death's Door",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Bonus XP",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Hunter's Sense",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "On The Hunt",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "MS"
+},
+ {
+    "name": "Shockwaves",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Flurries",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "CC"
+},
+ {
+    "name": "Hearty Invader",
+    "rawRarity": "Normal",
+    "rawType": "Offense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Elemental Applications",
+    "rawRarity": "Rare",
+    "rawType": "Offense",
+    "rawBuff": "CR"
+},
+ {
+    "name": "Heavy Hitting",
+    "rawRarity": "Rare",
+    "rawType": "Offense",
+    "rawBuff": "CD"
+},
+ {
+    "name": "Desperate Aggression",
+    "rawRarity": "Rare",
+    "rawType": "Offense",
+    "rawBuff": "CD"
+},
+ {
+    "name": "Cold Blooded",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Enraged",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Stoking Fire",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Strength Tonic",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Vexed",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Critically Charged",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Close Quarters",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Critical Escalation",
+    "rawRarity": "Epic",
+    "rawType": "Offense",
+    "rawBuff": "CD"
+},
+ {
+    "name": "Aspect of the Wolf",
+    "rawRarity": "Legendary",
+    "rawType": "Offense",
+    "rawBuff": "MS"
+},
+ {
+    "name": "Called Target",
+    "rawRarity": "Legendary",
+    "rawType": "Offense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Roll the Dice",
+    "rawRarity": "Legendary",
+    "rawType": "Offense",
+    "rawBuff": "CC"
+},
+ {
+    "name": "Regenerate",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Spinning Shield",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Bubbles",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Elemental Spheres",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "MS"
+},
+ {
+    "name": "Renewing Hide",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Shadow Claws",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "CC"
+},
+ {
+    "name": "Out of Stock",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Energy Drink",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Fleeing Defense",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "MS"
+},
+ {
+    "name": "Consume",
+    "rawRarity": "Normal",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Frozen Armor",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Managing Anger",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Riding Lightning",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "MS"
+},
+ {
+    "name": "Holy Rolling",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Persistence",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Tolerance",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Void Wake",
+    "rawRarity": "Rare",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Pulsing Elements",
+    "rawRarity": "Epic",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Mirroring",
+    "rawRarity": "Epic",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Power Draining",
+    "rawRarity": "Epic",
+    "rawType": "Defense",
+    "rawBuff": "PW"
+},
+ {
+    "name": "Magic Potions",
+    "rawRarity": "Legendary",
+    "rawType": "Defense",
+    "rawBuff": "HP"
+},
+ {
+    "name": "Charged Armor",
+    "rawRarity": "Legendary",
+    "rawType": "Defense",
+    "rawBuff": "AR"
+},
+ {
+    "name": "Community Healing",
+    "rawRarity": "Legendary",
+    "rawType": "Defense",
+    "rawBuff": "CR"
+}
+ ]

@@ -1,0 +1,39 @@
+
+[
+    {
+        "id": "CC",
+        "rawStat": "CritChance",
+        "value": 1
+    },
+    {
+        "id": "CR",
+        "rawStat": "CoolDownReduction",
+        "value": 1
+    },
+    {
+        "id": "AR",
+        "rawStat": "Armor",
+        "value": 1.5
+    },
+    {
+        "id": "PW",
+        "rawStat": "Power",
+        "value": 1
+    },
+    {
+        "id": "MS",
+        "rawStat": "MoveSpeed",
+        "value": 2
+    },
+    {
+        "id": "HP",
+        "rawStat": "Health",
+        "value": 2
+    },
+    {
+        "id": "CD",
+        "rawStat": "CritDamage",
+        "value": 2.5
+    }
+    
+]
