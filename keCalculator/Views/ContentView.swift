@@ -69,7 +69,9 @@ struct ContentView: View {
                         Spacer()
                     }
                     BuildRunesView(type: .Offense, showRunePicker: $showRunePicker)
+                        .frame(width: .infinity, height: 150, alignment: .center)
                     BuildRunesView(type: .Defense, showRunePicker: $showRunePicker)
+                        .frame(width: .infinity, height: 150, alignment: .center)
                     
                     HStack {
                         ContentButton(title: "Load") {

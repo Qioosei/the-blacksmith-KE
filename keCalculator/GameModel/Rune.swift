@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct Rune_Sample {
     static let Rune1: Rune = Rune(name: "CALLED TARGET", rawRarity: "Legendary", rawType: "Offense", rawBuff: "PW")
     static let EmptyOffense: Rune = Rune(name: "empty", rawRarity: "Normal", rawType: "Offense", rawBuff: "ER")
@@ -124,4 +125,19 @@ struct Rune : Codable, Identifiable{
         return desc
     }
     
+    var iconName: String {
+        var iconName = self.name.lowercased()
+        iconName = iconName.replacingOccurrences(of: " ", with: "_")
+        return iconName
+    }
+    
+    func Icon() -> Image {
+        let nsImage = NSImage(named: NSImage.Name(self.iconName))
+        if let image = nsImage {
+            print("found image")
+            return Image(nsImage: image)
+        }
+        print("using default for \(self.name) (\(self.iconName))")
+        return Image(self.type.iconName())
+    }
 }

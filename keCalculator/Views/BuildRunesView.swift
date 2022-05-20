@@ -36,7 +36,7 @@ struct BuildRunesView: View {
                 Spacer()
                 ForEach(runes.indices){ i in
                     VStack {
-                        Image(runes[i].type.iconName())
+                        runes[i].Icon()
                             .resizable()
                             .scaledToFit()
                             .frame(width:75)

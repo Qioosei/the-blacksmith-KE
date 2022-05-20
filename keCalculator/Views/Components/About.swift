@@ -13,21 +13,21 @@ struct AboutTitle: View {
     @State var text: String
     
     var body: some View {
-            ZStack(alignment: .leading) {
-                Image(systemName: icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:15, height:15)
-                    .foregroundColor(Color.theme.regular)
-                    
-                
-                HStack {
-                    StrokeText(text:text,width: 1,color: Color.black)
-                        .font(.headline)
-                    Spacer()
-                }
-                .offset(x: 25, y: 0)
+        ZStack(alignment: .leading) {
+            Image(systemName: icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width:15, height:15)
+                .foregroundColor(Color.theme.regular)
+            
+            
+            HStack {
+                StrokeText(text:text,width: 1,color: Color.black)
+                    .font(.headline)
+                Spacer()
             }
+            .offset(x: 25, y: 0)
+        }
     }
 }
 
@@ -56,23 +56,33 @@ struct About: View {
                     .lightBorder(cornerRadius: 5)
                 
                 VStack(spacing: 12) {
-                    AboutTitle(icon: "questionmark.square.fill", text: "What is the Blacksmith?")
-                    
-                    HStack {
-                        StrokeText(text: "The blacksmith is a build calculator for the mobile game Knight's edge. The blacksmith who sharpens your edge!",width:0.5,color: Color.black)
-                        Spacer()
+                    Group{
+                        AboutTitle(icon: "questionmark.square.fill", text: "What is the Blacksmith?")
+                        
+                        HStack {
+                            StrokeText(text: "The blacksmith is a build calculator for the mobile game Knight's edge. The blacksmith who sharpens your edge!",width:0.5,color: Color.black)
+                            Spacer()
+                        }
+                        
+                        AboutSplit()
                     }
-                    
-                    AboutSplit()
-                    
-                    AboutTitle(icon: "questionmark.square.fill", text: "Who made it?")
-                    
-                    HStack {
-                        StrokeText(text: "A fan of the game. You can find me on the game official discord: Qioosei#6532.\nI am NOT affiliated to LightFox Games and this app has been made for free for the community (and also because I had fun making it).",width:0.5,color: Color.black)
-                        Spacer()
+                    Group {
+                        AboutTitle(icon: "questionmark.square.fill", text: "Who made it?")
+                        
+                        HStack {
+                            StrokeText(text: "A fan of the game. You can find me on the game official discord: Qioosei#6532.\nI am NOT affiliated to LightFox Games and this app has been made for free for the community (and also because I had fun making it).",width:0.5,color: Color.black)
+                            Spacer()
+                        }
+                        AboutSplit()
                     }
-                    AboutSplit()
-                    
+                    Group {
+                        AboutTitle(icon: "questionmark.square.fill", text: "Why on Mac?")
+                        HStack {
+                            StrokeText(text: "Most practical for me, and publishing on the App Store for iPhones and iPads isn't free.", width: 0.5, color: Color.black)
+                            Spacer()
+                        }
+                        AboutSplit()
+                    }
                     HStack {
                         StrokeText(text: "Only use the latest version available at:", width: 0.5, color: Color.black)
                         Spacer()

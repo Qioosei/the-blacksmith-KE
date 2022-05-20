@@ -23,7 +23,7 @@ struct RuneRow: View {
     
     var body: some View {
         HStack{
-            Image(rune.type.iconName())
+            rune.Icon()
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30)
