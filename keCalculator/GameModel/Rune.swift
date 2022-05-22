@@ -134,7 +134,6 @@ struct Rune : Codable, Identifiable{
     func Icon() -> Image {
         let nsImage = NSImage(named: NSImage.Name(self.iconName))
         if let image = nsImage {
-            print("found image")
             return Image(nsImage: image)
         }
         print("using default for \(self.name) (\(self.iconName))")

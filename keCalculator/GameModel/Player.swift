@@ -20,15 +20,20 @@ class Player {
         self.level = PreferenceStore.playerLevel
     }
     
-    var power: Int {
+    var power: Double {
         GameModel.stat(withBase: 50, level: level)
     }
-    var health: Int {
+    var health: Double {
         GameModel.stat(withBase: 300, level: level)
     }
-    var armor: Int {
+    var armor: Double {
         GameModel.stat(withBase: 20, level: level)
     }
+    
+    var cooldownReduction: Double = 0
+    var critChance: Double = 10
+    var critDamage: Double = 50
+    var moveSpeed: Double = 100
     
     func levelUp() {
         self.level += 1

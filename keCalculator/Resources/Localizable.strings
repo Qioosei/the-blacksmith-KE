@@ -7,9 +7,13 @@
 */
 
 "main_title"    = "The Blacksmith";
-"main_power"    = "base power";
-"main_health"   = "base health";
-"main_armor"    = "base armor";
+"main_power"    = "Power";
+"main_health"   = "Health";
+"main_armor"    = "Armor";
+"main_crit_chance" = "Critical chance";
+"main_crit_damage" = "Critical damage";
+"main_cooldown" = "Cooldown reduction";
+"main_movespeed" = "Move Speed";
 "main_ig_power"    = "IG power";
 "main_ig_health"   = "IG health";
 "main_ig_armor"    = "IG armor";

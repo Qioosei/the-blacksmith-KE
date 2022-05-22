@@ -64,107 +64,111 @@ struct PlayerOverview: View {
                 }
             }
             
-            VStack {
-                HStack {
-                    Image("power")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth:30)
-                    VStack {
-                        Text("main_power")
-                            .font(.system(size: 10))
-                            .foregroundColor(Color.theme.power)
-                        Text(String(gm.basePower))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.regular)
+            HStack {
+                VStack {
+                    HStack {
+                        Image("power")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_power")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.power)
+                            StatText(buff:.Power)
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Image("hitpoints")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_health")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.health)
+                            StatText(buff:.Health)
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Image("armor")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_armor")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.armor)
+                            StatText(buff:.Armor)
+                        }
+                        Spacer()
                     }
                 }
-                //                        .padding(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
-                //                        .background(Color.theme.background)
-                //                        .clipShape(RoundedRectangle(cornerRadius: 3))
-                HStack {
-                    Image("hitpoints")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth:30)
-                    VStack {
-                        Text("main_health")
-                            .font(.system(size: 10))
-                            .foregroundColor(Color.theme.health)
-                        Text(String(gm.baseHealth))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.regular)
+                VStack {
+                    HStack {
+                        Image("crit_chance")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_crit_chance")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.power)
+                            StatText(buff:.CritChance)
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Image("crit_damage")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_crit_damage")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.power)
+                            StatText(buff:.CritDamage)
+                        }
+                        Spacer()
                     }
                 }
-                HStack {
-                    Image("armor")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth:30)
-                    VStack {
-                        Text("main_armor")
-                            .font(.system(size: 10))
-                            .foregroundColor(Color.theme.armor)
-                        Text(String(gm.baseArmor))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.theme.regular)
+                VStack {
+                    HStack {
+                        Image("cooldown")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_cooldown")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.armor)
+                            StatText(buff:.CoolDownReduction)
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Image("movespeed")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth:30)
+                        VStack {
+                            Text("main_movespeed")
+                                .font(.system(size: 10))
+                                .foregroundColor(Color.theme.armor)
+                            StatText(buff:.MoveSpeed)
+                        }
+                        Spacer()
                     }
                 }
             }
             .padding()
             .background(Color.theme.background)
             .lightBorder(cornerRadius: 5)
+            
             Spacer()
             
-            HStack {
-                VStack {
-                    HStack {
-                        VStack {
-                            Text("main_ig_power")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.power)
-                            Text(String(gm.inGamePower))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.theme.regular)
-                        }
-                        Image("power")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                    }
-                    HStack {
-                        VStack {
-                            Text("main_ig_health")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.health)
-                            Text(String(gm.inGameHealth))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.theme.regular)
-                        }
-                        Image("hitpoints")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                    }
-                    HStack {
-                        VStack {
-                            Text("main_ig_armor")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.armor)
-                            Text(String(gm.inGameArmor))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.theme.regular)
-                        }
-                        Image("armor")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                    }
-                }
-                .padding()
-            }
-            .background(Color.theme.background)
-            .lightBorder(cornerRadius: 5)
             
             Spacer()
         }
@@ -172,6 +176,30 @@ struct PlayerOverview: View {
         .padding()
         .background(Color.theme.regular.opacity(0.1))
         .lightBorder(cornerRadius: 10)
+    }
+}
+
+struct StatText: View {
+    
+    
+    @EnvironmentObject var gm: GameModel
+    
+    var buff: Buff.Stat
+    
+    var base: Double { gm.getBaseStat(buff)}
+    var bonus: Double { gm.getPassiveBonus(buff)}
+    var total: Double { base + bonus }
+    
+    
+    var body: some View {
+        HStack {
+            Text(String(Int(total)))
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(Color.theme.regular)
+            Text(" (\(Int(base)) + \(Int(bonus)) )")
+                .font(.system(size: 10, weight: .semibold))
+                .foregroundColor(Color.theme.regular.opacity(0.8))
+        }
     }
 }
 

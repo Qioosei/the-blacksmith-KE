@@ -15,7 +15,7 @@ struct Weapon: Codable {
         case Bow
         case Staff
         
-        func basePower() -> Int {
+        func basePower() -> Double {
             switch(self){
             case .Sword:
                 return 50
@@ -29,7 +29,7 @@ struct Weapon: Codable {
             
         }
         
-        func baseHealth() -> Int {
+        func baseHealth() -> Double {
             switch(self){
             case .Sword:
                 return 500
@@ -43,7 +43,7 @@ struct Weapon: Codable {
         }
         
         
-        func baseArmor() -> Int {
+        func baseArmor() -> Double {
             switch(self){
             case .Sword:
                 return 45
@@ -73,15 +73,15 @@ struct Weapon: Codable {
     var type: WType
     var element: Element
     
-    var power: Int {
+    var power: Double {
         GameModel.stat(withBase: type.basePower(), level: level)
     }
     
-    var armor: Int {
+    var armor: Double {
         GameModel.stat(withBase: type.baseArmor(), level: level)
     }
     
-    var health: Int {
+    var health: Double {
         GameModel.stat(withBase: type.baseHealth(), level: level)
     }
     

@@ -441,7 +441,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrG.KECalculator;
 				PRODUCT_MODULE_NAME = KECalculator;
 				PRODUCT_NAME = "The blacksmith";
@@ -473,7 +473,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrG.KECalculator;
 				PRODUCT_MODULE_NAME = KECalculator;
 				PRODUCT_NAME = "The blacksmith";

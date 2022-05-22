@@ -16,46 +16,88 @@ class GameModel: ObservableObject {
         return build.weapon
     }
     
-    var basePower: Int {
+    var basePower: Double {
         return player.power + weapon.power
     }
-    var baseHealth: Int {
+    var baseHealth: Double {
         player.health + weapon.health
     }
-    var baseArmor: Int {
+    var baseArmor: Double {
         player.armor + weapon.armor
     }
     
-    var inGamePower: Int {
-        return getInGameStat(.Power)
-    }
+//    var inGamePower: Int {
+//        return getInGameStat(.Power)
+//    }
+//
+//    var inGameHealth: Int {
+//        return getInGameStat(.Health)
+//    }
+//
+//    var inGameArmor: Int {
+//        return getInGameStat(.Armor)
+    //    }
     
-    var inGameHealth: Int {
-        return getInGameStat(.Health)
-    }
-    
-    var inGameArmor: Int {
-        return getInGameStat(.Armor)
-    }
-    
-    func getInGameStat(_ buff: Buff.Stat) -> Int {
-            var multiplier: Double = 0
-            var passiveRunes: [Rune] = build.offenseRunes.filter ({ $0.passive.stat == buff })
-            passiveRunes.append(contentsOf:build.defenseRunes.filter({$0.passive.stat == buff}))
-            
-            for rune: Rune in passiveRunes {
-                multiplier += Double(rune.level) * rune.passive.value
-            }
+    func getBaseStat(_ buff: Buff.Stat) -> Double {
+        
         var stat: Double = 0
-        if(buff == .Power) {
-            stat = Double(basePower)
-        } else if(buff == .Armor) {
+        switch(buff) {
+        case .Armor:
             stat = Double(baseArmor)
-        } else if(buff == .Health) {
+        case .Health:
             stat = Double(baseHealth)
+        case .Power:
+            stat = Double(basePower)
+        case .CoolDownReduction:
+            stat = player.cooldownReduction
+        case .CritChance:
+            stat = player.critChance
+        case .CritDamage:
+            stat = player.critDamage
+        case .MoveSpeed:
+            stat = player.moveSpeed
         }
-            let calculatedStat: Double = Double(stat) * (1 + multiplier/100)
-            return Int(round(calculatedStat))
+        return stat
+    }
+    
+    func getInGameStat(_ buff: Buff.Stat) -> Double {
+        
+        let stat = self.getBaseStat(buff)
+        let bonus = self.getPassiveBonus(stat, self.getPassiveMultiplier(buff))
+        return stat + bonus
+    }
+    
+    func getPassiveBonus(_ buff: Buff.Stat) -> Double {
+        
+        if([Buff.Stat.Armor,Buff.Stat.Health,Buff.Stat.Power,Buff.Stat.MoveSpeed].contains(buff)) {
+            let stat = self.getBaseStat(buff)
+            let multiplier = self.getPassiveMultiplier(buff)
+            
+            let calculatedStat: Double = stat * (multiplier/100)
+            print("\(buff.rawValue) passive bonus: \(calculatedStat) = \(stat) * (\(multiplier)/100)")
+            return calculatedStat
+        }
+        else {
+            return self.getPassiveMultiplier(buff)
+        }
+    }
+    
+    func getPassiveBonus(_ stat: Double, _ multiplier: Double) -> Double {
+        let calculatedStat: Double = stat * (multiplier/100)
+        
+        return calculatedStat
+    }
+    
+    func getPassiveMultiplier(_ buff: Buff.Stat) -> Double {
+        var multiplier: Double = 0
+        var passiveRunes: [Rune] = build.offenseRunes.filter ({ $0.passive.stat == buff })
+        passiveRunes.append(contentsOf:build.defenseRunes.filter({$0.passive.stat == buff}))
+        
+        for rune: Rune in passiveRunes {
+            multiplier += Double(rune.level) * rune.passive.value
+        }
+        print("\(buff.rawValue) = \(multiplier)")
+        return multiplier
     }
     
     init() {
@@ -107,9 +149,9 @@ class GameModel: ObservableObject {
         return tmpRunes
     }
     
-    static func stat(withBase base: Int, level: Int) -> Int {
-        let calculatedStat: Double = Double(pow(Double(1.02),Double(level))) * Double(base)
-        return Int(round(calculatedStat))
+    static func stat(withBase base: Double, level: Int) -> Double {
+        let calculatedStat: Double = Double(pow(Double(1.02),Double(level))) * base
+        return round(calculatedStat)
     }
     
 }

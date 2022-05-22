@@ -26,7 +26,7 @@ struct RuneRow: View {
             rune.Icon()
                 .resizable()
                 .scaledToFit()
-                .frame(width: 30)
+                .frame(width: 45)
             Text(rune.name)
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.regular)
@@ -97,6 +97,14 @@ struct RuneListView: View {
     @Binding var isShowing: Bool
     @State var searchTerm: String = ""
     
+    @State var filterPower: Bool = false
+    @State var filterArmor: Bool = false
+    @State var filterHealth: Bool = false
+    @State var filterCritChance: Bool = false
+    @State var filterCritDamage: Bool = false
+    @State var filterCooldownReduction: Bool = false
+    @State var filterMovespeed: Bool = false
+    
     
     @State var type: Rune.RType
     
@@ -110,6 +118,7 @@ struct RuneListView: View {
     }
     
     
+    
     var filteredRunes: [Rune] {
         var runes: [Rune]
         if(type == .Offense) {
@@ -118,8 +127,38 @@ struct RuneListView: View {
             runes = GameModel.DefenseRunes()
         }
         return runes.filter {
-            searchTerm.isEmpty ? true : $0.name.lowercased().contains(searchTerm.lowercased())
+            self.isFiltered($0)
         }
+    }
+    
+    func isFiltered(_ rune: Rune) -> Bool {
+        let searchFiltered: Bool = searchTerm.isEmpty ? true : rune.name.lowercased().contains(searchTerm.lowercased())
+        var filteredType: [Buff.Stat] = [Buff.Stat]()
+        if(filterPower) {
+            filteredType.append(Buff.Stat.Power)
+        }
+        if(filterArmor) {
+            filteredType.append(Buff.Stat.Armor)
+        }
+        if(filterHealth) {
+            filteredType.append(Buff.Stat.Health)
+        }
+        if(filterCritChance) {
+            filteredType.append(Buff.Stat.CritChance)
+        }
+        if(filterCritDamage) {
+            filteredType.append(Buff.Stat.CritDamage)
+        }
+        if(filterCooldownReduction) {
+            filteredType.append(Buff.Stat.CoolDownReduction)
+        }
+        if(filterMovespeed) {
+            filteredType.append(Buff.Stat.MoveSpeed)
+        }
+        
+        let typeFiltered: Bool = filteredType.contains(rune.passive.stat)
+        
+        return searchFiltered && !typeFiltered
     }
     
     var body: some View {
@@ -138,19 +177,39 @@ struct RuneListView: View {
             
             VStack(spacing:2) {
                 Spacer()
-                ScrollView {
-                    VStack(spacing:2) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(Color.theme.regular)
-                            TextField("Search Rune", text: $searchTerm)
-                                .foregroundColor(Color.theme.regular)
+                VStack(spacing:12) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(Color.theme.regular)
+                        TextField("Search Rune", text: $searchTerm)
+                            .foregroundColor(Color.theme.regular)
+                    }
+                    
+                    HStack {
+                        StrokeText(text: "Filters:", width: 1, color: Color.black)
+                            .font(.system(size: 14, weight: .bold))
+                        Spacer()
+                        HStack(spacing:20) {
+                            FilterButton(filterIcon: "power", filterEnabled: $filterPower)
+                            FilterButton(filterIcon: "hitpoints", filterEnabled: $filterHealth)
+                            FilterButton(filterIcon: "armor", filterEnabled: $filterArmor)
+                            FilterButton(filterIcon: "crit_chance", filterEnabled: $filterCritChance)
+                            FilterButton(filterIcon: "crit_damage", filterEnabled: $filterCritDamage)
+                            FilterButton(filterIcon: "cooldown", filterEnabled: $filterCooldownReduction)
+                            FilterButton(filterIcon: "movespeed", filterEnabled: $filterMovespeed)
                         }
-                        .padding(10) // searchbar background here
-                        .background(Color.theme.regular.opacity(0.1))
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                        .background(Color.theme.background)
+                        Spacer()
+                    }
+                }
+                .padding(10)
+                .background(Color.theme.regular.opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+            .background(Color.theme.background)
+                
+                
+                ScrollView {
+                    VStack(spacing:2) {// searchbar background here
                         
                         ForEach(filteredRunes){ rune in
                             RuneRow(rune: rune, pickRune: self.pick)
@@ -168,6 +227,29 @@ struct RuneListView: View {
             .padding(.horizontal,5)
         }
         
+    }
+}
+
+struct FilterButton: View {
+    var filterIcon: String
+    @Binding var filterEnabled: Bool
+    var body: some View {
+        
+            ZStack {
+                Image("button")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 35, height: 35)
+                Image(filterIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+                
+            }
+            .opacity(filterEnabled ? 0.3 : 1)
+            .onTapGesture {
+                filterEnabled.toggle()
+            }
     }
 }
 
