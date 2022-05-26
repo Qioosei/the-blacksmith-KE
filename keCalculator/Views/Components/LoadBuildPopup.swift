@@ -107,7 +107,7 @@ struct LoadBuildPopup_Previews: PreviewProvider {
     
     static var previews: some View {
         LoadBuildPopup(isShowing: .constant(true))
-            .environmentObject(GameModel())
+            .environmentObject(GameModel.standard)
             .environmentObject(BuildManager.standard)
             .environmentObject(OverviewViewModel())
     }

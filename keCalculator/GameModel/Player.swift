@@ -34,6 +34,7 @@ class Player {
     var critChance: Double = 10
     var critDamage: Double = 50
     var moveSpeed: Double = 100
+    var expRate: Double = 1
     
     func levelUp() {
         self.level += 1

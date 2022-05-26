@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GameVersion</key>
+	<string>1.15</string>
+	<key>RunesVersion</key>
+	<string>2</string>
+	<key>ResetStore</key>
+	<false/>
+	<key>LogCategories</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+		<integer>4</integer>
+	</array>
+</dict>
+</plist>

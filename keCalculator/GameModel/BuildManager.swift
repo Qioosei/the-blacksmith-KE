@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class BuildManager: ObservableObject {
     
@@ -107,7 +108,28 @@ class Build: Codable, Identifiable {
     }
     var offenseRunes: [Rune]
     var defenseRunes: [Rune]
+    
+    var runes: [Rune] {
+        var runes: [Rune] = [Rune]()
+        runes.append(contentsOf: offenseRunes)
+        runes.append(contentsOf: defenseRunes)
+        return runes
+    }
+ 
+    var effects: [StatStackBuff] {
+        var effects = [StatStackBuff]()
+        
+        for rune in runes {
+            if let eff = rune.effects {
+                effects.append(contentsOf: eff)
+            }
+        }
+        return effects
+    }
+    
+   
     var weapon: Weapon
+    
     
     init(name: String, offenseRunes: [Rune], defenseRunes: [Rune], weapon: Weapon) {
         self.name = name
@@ -123,7 +145,17 @@ class Build: Codable, Identifiable {
             return
         }
         
-        print(self.Description())
+        if var effects = rune.effects {
+            
+            for i in 0..<effects.count {
+                if(effects[i].currentCount < 0) {
+                    print("updating effect count.")
+                    effects[i].currentCount = effects[i].defaultCount
+                }
+            }
+            
+        }
+        
         print("changing \(type) rune#\(index) with \(rune.name)")
         var runes: [Rune] = type == .Offense ? offenseRunes : defenseRunes
         runes.remove(at: index)
@@ -135,6 +167,7 @@ class Build: Codable, Identifiable {
         else {
             self.defenseRunes = runes
         }
+        
         print(self.Description())
     }
     
@@ -151,6 +184,8 @@ class Build: Codable, Identifiable {
         }
         return desc
     }
+    
+    
     
 }
 

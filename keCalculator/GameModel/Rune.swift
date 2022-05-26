@@ -10,9 +10,9 @@ import SwiftUI
 
 
 struct Rune_Sample {
-    static let Rune1: Rune = Rune(name: "CALLED TARGET", rawRarity: "Legendary", rawType: "Offense", rawBuff: "PW")
-    static let EmptyOffense: Rune = Rune(name: "empty", rawRarity: "Normal", rawType: "Offense", rawBuff: "ER")
-    static let EmptyDefense: Rune = Rune(name: "empty", rawRarity: "Normal", rawType: "Defense", rawBuff: "ER")
+    static let Rune1: Rune = Rune(name: "CALLED TARGET", rarity: .Legendary, type: .Offense, rawBuff: "PW")
+    static let EmptyOffense: Rune = Rune(name: "empty", rarity: .Normal, type: .Offense, rawBuff: "ER")
+    static let EmptyDefense: Rune = Rune(name: "empty", rarity: .Normal, type: .Defense, rawBuff: "ER")
 
 }
 
@@ -21,7 +21,7 @@ struct Rune : Codable, Identifiable{
         return name
     }
     
-    enum RType: String {
+    enum RType: String, Codable {
         case Offense = "Offense"
         case Defense = "Defense"
         
@@ -36,7 +36,7 @@ struct Rune : Codable, Identifiable{
         }
     }
     
-    enum Rarity: String {
+    enum Rarity: String, Codable {
         case Normal = "Normal"
         case Rare = "Rare"
         case Epic = "Epic"
@@ -69,9 +69,26 @@ struct Rune : Codable, Identifiable{
         }
     }
     
+    var effects: [StatStackBuff]?
+    
+    func effectsForStat(_ buff: Stat) -> [StatStackBuff] {
+        var filteredEffects = [StatStackBuff]()
+        
+        if let effects = self.effects {
+            for effect in effects {
+                if(effect.stackForStat(buff).count > 0) {
+                    filteredEffects.append(effect)
+                }
+            }
+        }
+        
+        
+        
+        return filteredEffects
+    }
     
     private enum CodingKeys: String, CodingKey {
-        case name, rawRarity, rawType, rawBuff
+        case name, rarity, type, rawBuff, effects
     }
     
     var name: String
@@ -92,30 +109,40 @@ struct Rune : Codable, Identifiable{
             PreferenceStore.setRuneLevel(rune: self, level: level)
         }
     }
-    
-    
-    var rawRarity: String
-    var rarity: Rarity {
-        Rarity(rawValue: self.rawRarity)!
+    var effectLevel: Int {
+        var offset = 0
+        if(rarity == .Legendary) {
+            offset = 1
+        }
+        if(level < 7) {
+            return 0
+        } else if (level < 10) {
+            return 1 - offset
+        } else {
+            return 2 - offset
+        }
     }
     
-    var rawType: String
-    var type: RType {
-        RType(rawValue: self.rawType)!
-    }
+    
+    var rarity: Rarity
+    
+    var type: RType
     
     var rawBuff: String
     var passive: Buff {
         if let buff = GameModel.PassiveBuffs.first(where: {$0.id == self.rawBuff}) {
             return buff
         }
-        return Buff(id: "ER", rawStat: "Power", value: 0)
+        return Buff(id: "ER", stat: .Power, value: 0)
     }
-//    var active: Buff
+    
+    
     
     func Description() -> String {
         return "\(self.name) (\(self.rarity)):\n\(self.type)\n\(self.passive.Description())"
     }
+    
+    
     var passiveDescription: String {
         var desc: String = ""
         desc.append(self.passive.stat.rawValue)

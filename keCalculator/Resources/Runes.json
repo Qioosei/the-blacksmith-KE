@@ -1,284 +1,367 @@
 [
  {
     "name": "Exploit Weakness",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
-    "rawBuff": "CC"
+    "rarity": "Normal",
+    "type": "Offense",
+    "rawBuff": "CC",
+    "effects":[{
+        "name": "Exploit Weakness",
+        "duration": -1,
+        "maxCount": -1,
+        "condition": "RFU",
+        "defaultCount": 100,
+        "affect": [ {"stat": "Power",
+            "levelIncrement": 0.15,
+            "baseValue": 0.3
+        }
+        ]
+     }]
 },
  {
     "name": "Refreshing Rivals",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "CR"
 },
  {
     "name": "Armored Claws",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "AR"
 },
  {
     "name": "Death's Door",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
-    "rawBuff": "PW"
+    "rarity": "Normal",
+    "type": "Offense",
+    "rawBuff": "PW",
+    "effects":[{
+        "name": "Death's Door",
+        "duration": -1,
+        "maxCount": 10,
+        "condition": "RFU",
+        "defaultCount": 10,
+        "affect": [ {"stat": "Power",
+            "baseValue": 2,
+            "levelIncrement": 1
+        }
+        ]
+     }]
 },
  {
     "name": "Bonus XP",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Hunter's Sense",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "On The Hunt",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "MS"
 },
  {
     "name": "Shockwaves",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Flurries",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "CC"
 },
  {
     "name": "Hearty Invader",
-    "rawRarity": "Normal",
-    "rawType": "Offense",
+    "rarity": "Normal",
+    "type": "Offense",
     "rawBuff": "HP"
 },
  {
     "name": "Elemental Applications",
-    "rawRarity": "Rare",
-    "rawType": "Offense",
+    "rarity": "Rare",
+    "type": "Offense",
     "rawBuff": "CR"
 },
  {
     "name": "Heavy Hitting",
-    "rawRarity": "Rare",
-    "rawType": "Offense",
+    "rarity": "Rare",
+    "type": "Offense",
     "rawBuff": "CD"
 },
  {
     "name": "Desperate Aggression",
-    "rawRarity": "Rare",
-    "rawType": "Offense",
+    "rarity": "Rare",
+    "type": "Offense",
     "rawBuff": "CD"
 },
  {
     "name": "Cold Blooded",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Enraged",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Stoking Fire",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Strength Tonic",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Vexed",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Critically Charged",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Close Quarters",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
+    "rarity": "Epic",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Critical Escalation",
-    "rawRarity": "Epic",
-    "rawType": "Offense",
-    "rawBuff": "CD"
+    "rarity": "Epic",
+    "type": "Offense",
+    "rawBuff": "CD",
+    "effects":[{
+        "name": "Critical Escalation",
+        "duration": -1,
+        "maxCount": 5,
+        "condition": "RFU",
+        "defaultCount": 5,
+        "affect": [ {"stat": "CritChance",
+            "baseValue": 1.5,
+            "levelIncrement": 1.5
+        }
+        ]
+     }]
 },
  {
     "name": "Aspect of the Wolf",
-    "rawRarity": "Legendary",
-    "rawType": "Offense",
+    "rarity": "Legendary",
+    "type": "Offense",
     "rawBuff": "MS"
 },
  {
     "name": "Called Target",
-    "rawRarity": "Legendary",
-    "rawType": "Offense",
+    "rarity": "Legendary",
+    "type": "Offense",
     "rawBuff": "PW"
 },
  {
     "name": "Roll the Dice",
-    "rawRarity": "Legendary",
-    "rawType": "Offense",
-    "rawBuff": "CC"
+    "rarity": "Legendary",
+    "type": "Offense",
+    "rawBuff": "CC",
+    "effects": [{
+        "name": "Power Dice",
+        "duration": -1,
+        "maxCount": 1,
+        "condition": "RFU",
+        "defaultCount": 1,
+        "affect": [ {"stat": "Power",
+            "baseValue": 15,
+            "levelIncrement": 0
+        }, {"stat": "CritChance",
+            "baseValue": 15,
+            "levelIncrement": 1.5
+        }, {"stat": "CritDamage",
+            "baseValue": 15,
+            "levelIncrement": 0
+        }, {"stat": "MoveSpeed",
+            "baseValue": 20,
+            "levelIncrement": 0
+        }
+        ]
+    },
+    {
+        "name": "Exploding Dice",
+        "duration": -1,
+        "maxCount": 1,
+        "condition": "RFU",
+        "defaultCount": 0,
+        "affect": [
+            {"stat": "MoveSpeed",
+                "baseValue": 20,
+                "levelIncrement": 0
+            }
+        ]
+    },
+    {
+        "name": "Poison Dice",
+        "duration": -1,
+        "maxCount": 1,
+        "condition": "RFU",
+        "defaultCount": 0,
+        "affect": [
+            {"stat": "MoveSpeed",
+                "baseValue": 20,
+                "levelIncrement": 0
+            }
+        ]
+    }]
 },
  {
     "name": "Regenerate",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Spinning Shield",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Bubbles",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Elemental Spheres",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "MS"
 },
  {
     "name": "Renewing Hide",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Shadow Claws",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "CC"
 },
  {
     "name": "Out of Stock",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "PW"
 },
  {
     "name": "Energy Drink",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Fleeing Defense",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "MS"
 },
  {
     "name": "Consume",
-    "rawRarity": "Normal",
-    "rawType": "Defense",
+    "rarity": "Normal",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Frozen Armor",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Managing Anger",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Riding Lightning",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "MS"
 },
  {
     "name": "Holy Rolling",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Persistence",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Tolerance",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Void Wake",
-    "rawRarity": "Rare",
-    "rawType": "Defense",
+    "rarity": "Rare",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Pulsing Elements",
-    "rawRarity": "Epic",
-    "rawType": "Defense",
+    "rarity": "Epic",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Mirroring",
-    "rawRarity": "Epic",
-    "rawType": "Defense",
+    "rarity": "Epic",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Power Draining",
-    "rawRarity": "Epic",
-    "rawType": "Defense",
+    "rarity": "Epic",
+    "type": "Defense",
     "rawBuff": "PW"
 },
  {
     "name": "Magic Potions",
-    "rawRarity": "Legendary",
-    "rawType": "Defense",
+    "rarity": "Legendary",
+    "type": "Defense",
     "rawBuff": "HP"
 },
  {
     "name": "Charged Armor",
-    "rawRarity": "Legendary",
-    "rawType": "Defense",
+    "rarity": "Legendary",
+    "type": "Defense",
     "rawBuff": "AR"
 },
  {
     "name": "Community Healing",
-    "rawRarity": "Legendary",
-    "rawType": "Defense",
+    "rarity": "Legendary",
+    "type": "Defense",
     "rawBuff": "CR"
 }
  ]

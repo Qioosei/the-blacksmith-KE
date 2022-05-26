@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B01BD0128215CD100581F2E /* LevelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B01BCFF2821430B00581F2E /* LevelPicker.swift */; };
 		8B01BD0428216DD200581F2E /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B01BD0228216BB200581F2E /* StrokeText.swift */; };
+		8B36D511283FD4A1000AB84F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D510283FD4A1000AB84F /* Logger.swift */; };
 		8B520E37282E5C320008A4B8 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B520E36282E5C320008A4B8 /* SideMenu.swift */; };
 		8B520E3B282E5FCA0008A4B8 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B520E3A282E5FCA0008A4B8 /* About.swift */; };
 		8B74DFC62812D2D200C47D97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B74DFC52812D2D200C47D97 /* Preview Assets.xcassets */; };
@@ -32,6 +33,8 @@
 		8B74DFDC2812D34300C47D97 /* BuildRunesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DF9D2807455C00C47D97 /* BuildRunesView.swift */; };
 		8B74DFDD2812D34700C47D97 /* RuneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DFAF280AFC1500C47D97 /* RuneListView.swift */; };
 		8B74DFDE2812D41400C47D97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B74DF80280594F600C47D97 /* Assets.xcassets */; };
+		8B8AAD1E283B83E100128F45 /* StatStackBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AAD1D283B83E100128F45 /* StatStackBuff.swift */; };
+		8B8AAD21283B83FD00128F45 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AAD20283B83FD00128F45 /* Stat.swift */; };
 		8BB2BBFF28257A3200373D3F /* WeaponPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2BBFE28257A3200373D3F /* WeaponPicker.swift */; };
 		8BB2BC012826E8A400373D3F /* SaveBuildPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2BC002826E8A400373D3F /* SaveBuildPopup.swift */; };
 		8BB2BC032826EC3500373D3F /* ContentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2BC022826EC3500373D3F /* ContentButton.swift */; };
@@ -42,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8B01BCFF2821430B00581F2E /* LevelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPicker.swift; sourceTree = "<group>"; };
 		8B01BD0228216BB200581F2E /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
+		8B36D510283FD4A1000AB84F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8B520E36282E5C320008A4B8 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideMenu.swift; path = keCalculator/Views/Components/SideMenu.swift; sourceTree = SOURCE_ROOT; };
 		8B520E3A282E5FCA0008A4B8 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = About.swift; path = keCalculator/Views/Components/About.swift; sourceTree = SOURCE_ROOT; };
 		8B74DF7C280594F200C47D97 /* keCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keCalculatorApp.swift; sourceTree = "<group>"; };
@@ -68,6 +72,9 @@
 		8B74DFBC2812D2CD00C47D97 /* The blacksmith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The blacksmith.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B74DFC52812D2D200C47D97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B74DFC72812D2D200C47D97 /* KECalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KECalculator.entitlements; sourceTree = "<group>"; };
+		8B8AAD1D283B83E100128F45 /* StatStackBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatStackBuff.swift; sourceTree = "<group>"; };
+		8B8AAD20283B83FD00128F45 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
+		8B8AAD24283C1FFF00128F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8BB2BBFE28257A3200373D3F /* WeaponPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeaponPicker.swift; path = keCalculator/Views/WeaponPicker.swift; sourceTree = SOURCE_ROOT; };
 		8BB2BC002826E8A400373D3F /* SaveBuildPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveBuildPopup.swift; path = keCalculator/Views/Components/SaveBuildPopup.swift; sourceTree = SOURCE_ROOT; };
 		8BB2BC022826EC3500373D3F /* ContentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentButton.swift; path = keCalculator/Views/Components/ContentButton.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +144,7 @@
 				8B74DF9128059D6900C47D97 /* MiscExtensions.swift */,
 				8B74DFA9280AD8A900C47D97 /* Bundle-Decodable.swift */,
 				8B74DFB6281166F200C47D97 /* PreferenceStore.swift */,
+				8B36D510283FD4A1000AB84F /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -151,6 +159,8 @@
 				8B74DFA1280747F000C47D97 /* Buff.swift */,
 				8B74DFA3280AD32B00C47D97 /* DamageSource.swift */,
 				8B74DFAD280AE9C600C47D97 /* BuildManager.swift */,
+				8B8AAD1D283B83E100128F45 /* StatStackBuff.swift */,
+				8B8AAD20283B83FD00128F45 /* Stat.swift */,
 			);
 			path = GameModel;
 			sourceTree = "<group>";
@@ -177,6 +187,7 @@
 		8B74DFBD2812D2CD00C47D97 /* KECalculator */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AAD24283C1FFF00128F45 /* Info.plist */,
 				8B74DF9328059F9A00C47D97 /* Resources */,
 				8B74DF7C280594F200C47D97 /* keCalculatorApp.swift */,
 				8B74DF8C2805962E00C47D97 /* GameModel */,
@@ -277,8 +288,11 @@
 				8B520E37282E5C320008A4B8 /* SideMenu.swift in Sources */,
 				8B74DFCE2812D31600C47D97 /* keCalculatorApp.swift in Sources */,
 				8B74DFDB2812D34100C47D97 /* PlayerOverview.swift in Sources */,
+				8B8AAD1E283B83E100128F45 /* StatStackBuff.swift in Sources */,
 				8BB2BC072827D06400373D3F /* Popup.swift in Sources */,
+				8B8AAD21283B83FD00128F45 /* Stat.swift in Sources */,
 				8B74DFCF2812D31A00C47D97 /* GameModel.swift in Sources */,
+				8B36D511283FD4A1000AB84F /* Logger.swift in Sources */,
 				8BB2BBFF28257A3200373D3F /* WeaponPicker.swift in Sources */,
 				8B01BD0128215CD100581F2E /* LevelPicker.swift in Sources */,
 				8B74DFDC2812D34300C47D97 /* BuildRunesView.swift in Sources */,
@@ -434,6 +448,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KECalculator/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -466,6 +481,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KECalculator/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

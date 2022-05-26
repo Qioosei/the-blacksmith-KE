@@ -133,27 +133,27 @@ struct RuneListView: View {
     
     func isFiltered(_ rune: Rune) -> Bool {
         let searchFiltered: Bool = searchTerm.isEmpty ? true : rune.name.lowercased().contains(searchTerm.lowercased())
-        var filteredType: [Buff.Stat] = [Buff.Stat]()
+        var filteredType: [Stat] = [Stat]()
         if(filterPower) {
-            filteredType.append(Buff.Stat.Power)
+            filteredType.append(Stat.Power)
         }
         if(filterArmor) {
-            filteredType.append(Buff.Stat.Armor)
+            filteredType.append(Stat.Armor)
         }
         if(filterHealth) {
-            filteredType.append(Buff.Stat.Health)
+            filteredType.append(Stat.Health)
         }
         if(filterCritChance) {
-            filteredType.append(Buff.Stat.CritChance)
+            filteredType.append(Stat.CritChance)
         }
         if(filterCritDamage) {
-            filteredType.append(Buff.Stat.CritDamage)
+            filteredType.append(Stat.CritDamage)
         }
         if(filterCooldownReduction) {
-            filteredType.append(Buff.Stat.CoolDownReduction)
+            filteredType.append(Stat.CoolDownReduction)
         }
         if(filterMovespeed) {
-            filteredType.append(Buff.Stat.MoveSpeed)
+            filteredType.append(Stat.MoveSpeed)
         }
         
         let typeFiltered: Bool = filteredType.contains(rune.passive.stat)

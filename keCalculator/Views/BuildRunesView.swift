@@ -39,7 +39,7 @@ struct BuildRunesView: View {
                         runes[i].Icon()
                             .resizable()
                             .scaledToFit()
-                            .frame(width:75)
+                            .frame(width:75, height:75)
                         Text(runes[i].name)
                             .font(.system(size: 11))
                             .fontWeight(.bold)
@@ -75,7 +75,7 @@ struct BuildRunesView_Previews: PreviewProvider {
                 BuildRunesView(type: .Defense, showRunePicker: .constant(false))
             }
         }
-        .environmentObject(GameModel())
+        .environmentObject(GameModel.standard)
         .environmentObject(OverviewViewModel())
     }
 }

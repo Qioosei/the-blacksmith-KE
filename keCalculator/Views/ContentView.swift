@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var gm: GameModel = GameModel()
+    @StateObject var gm: GameModel = GameModel.standard
     @StateObject var vm: OverviewViewModel = OverviewViewModel()
     @StateObject var bm: BuildManager = BuildManager.standard
     
@@ -44,7 +44,7 @@ struct ContentView: View {
                         .padding()
                         .foregroundColor(Color.theme.regular)
                         .background(Color.theme.regular.opacity(0.1))
-                    .lightBorder(cornerRadius: 5)
+                        .lightBorder(cornerRadius: 5)
                     Spacer()
                 }
                 
@@ -68,10 +68,18 @@ struct ContentView: View {
                         StrokeText(text: gm.build.name, width: 1, color: Color.black)
                         Spacer()
                     }
-                    BuildRunesView(type: .Offense, showRunePicker: $showRunePicker)
-                        .frame(width: .infinity, height: 150, alignment: .center)
-                    BuildRunesView(type: .Defense, showRunePicker: $showRunePicker)
-                        .frame(width: .infinity, height: 150, alignment: .center)
+                    HStack {
+                        ActiveEffectView()
+                        Spacer()
+                        VStack {
+                            BuildRunesView(type: .Offense, showRunePicker: $showRunePicker)
+                                .lightBorder(cornerRadius: 10)
+                                .frame(width:425, height: 175, alignment: .center)
+                            BuildRunesView(type: .Defense, showRunePicker: $showRunePicker)
+                                .lightBorder(cornerRadius: 10)
+                                .frame(width:425, height: 175, alignment: .center)
+                        }
+                    }
                     
                     HStack {
                         ContentButton(title: "Load") {
@@ -149,6 +157,84 @@ struct ContentView: View {
     }
 }
 
+
+struct ActiveEffectRow: View {
+    @EnvironmentObject var gm: GameModel
+    var buff: StatStackBuff.Stack
+    var count: Int
+    var effectLevel: Int
+    
+    var buttonSize: CGFloat = 20
+    
+    var singleBonus: Double {
+        Double(buff.baseValue + Double(effectLevel) * buff.levelIncrement)
+    }
+    var singleBonusString: String {
+        String(format:"%.2f",singleBonus)
+    }
+    var fullBonus: Double {
+        singleBonus * Double(count)
+    }
+    var fullBonusString: String {
+        String(format:"%.2f",fullBonus)
+    }
+    
+    var body: some View {
+        HStack{
+            Text("\(singleBonusString) % * \(count) = \(fullBonusString)")
+
+            Image(buff.stat.iconName())
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+            Spacer()
+        }
+    }
+}
+
+struct ActiveEffectView: View {
+    
+    @EnvironmentObject var gm: GameModel
+    
+    var body: some View {
+        
+        VStack(spacing:12) {
+            
+            Text("main_active_effects")
+                .fontWeight(.bold)
+                .font(.system(size: 13))
+                .foregroundColor(Color.theme.regular)
+                .padding(4)
+            ScrollView {
+                VStack(spacing:12) {
+                    ForEach(gm.build.runes) { rune in
+                        if let effects = rune.effects {
+                            VStack(spacing:6){
+                                ForEach(effects) { effect in
+                                    HStack {
+                                        Spacer()
+                                        Text(effect.name)
+                                        Spacer()
+                                    }
+                                    ForEach(effect.affect) { stack in
+                                        ActiveEffectRow(buff: stack, count: effect.currentCount, effectLevel: rune.effectLevel)
+                                    }
+                                }
+                            }
+                            .padding(EdgeInsets(top: 8, leading: 10, bottom: 5, trailing: 10))
+                            .background(Color.theme.itemBackground)
+                            .lightBorder(cornerRadius: 2)
+                        }
+                    }
+                }
+            }
+        }
+        .frame(minWidth:300)
+        .padding()
+        .background(Color.theme.regular.opacity(0.1))
+        .lightBorder(cornerRadius: 10)
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

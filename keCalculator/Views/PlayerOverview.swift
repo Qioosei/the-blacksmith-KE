@@ -16,12 +16,12 @@ struct WeaponDisplay: View {
         
         ZStack {
             Image(gm.weapon.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 100)
-                    .padding()
-                    .onTapGesture {
-                        vm.isShowingWeaponPicker = true
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 100)
+                .padding()
+                .onTapGesture {
+                    vm.isShowingWeaponPicker = true
                 }
             ZStack {
                 Image("level_background")
@@ -64,106 +64,118 @@ struct PlayerOverview: View {
                 }
             }
             
-            HStack {
-                VStack {
-                    HStack {
-                        Image("power")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_power")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.power)
-                            StatText(buff:.Power)
+            VStack(alignment:.center) {
+                HStack {
+                    VStack {
+                        HStack {
+                            Image("power")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_power")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.power)
+                                StatText(buff:.Power)
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                        HStack {
+                            Image("hitpoints")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_health")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.health)
+                                StatText(buff:.Health)
+                            }
+                            Spacer()
+                        }
+                        HStack {
+                            Image("armor")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_armor")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.armor)
+                                StatText(buff:.Armor)
+                            }
+                            Spacer()
+                        }
                     }
-                    HStack {
-                        Image("hitpoints")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_health")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.health)
-                            StatText(buff:.Health)
+                    VStack {
+                        HStack {
+                            Image("crit_chance")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_crit_chance")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.power)
+                                StatText(buff:.CritChance)
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                        HStack {
+                            Image("crit_damage")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_crit_damage")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.power)
+                                StatText(buff:.CritDamage)
+                            }
+                            Spacer()
+                        }
                     }
-                    HStack {
-                        Image("armor")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_armor")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.armor)
-                            StatText(buff:.Armor)
+                    VStack {
+                        HStack {
+                            Image("cooldown")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_cooldown")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.armor)
+                                StatText(buff:.CoolDownReduction)
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                        HStack {
+                            Image("movespeed")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:30,height:30)
+                            VStack {
+                                Text("main_movespeed")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.theme.armor)
+                                StatText(buff:.MoveSpeed)
+                            }
+                            Spacer()
+                        }
                     }
                 }
-                VStack {
-                    HStack {
-                        Image("crit_chance")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_crit_chance")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.power)
-                            StatText(buff:.CritChance)
-                        }
-                        Spacer()
-                    }
-                    HStack {
-                        Image("crit_damage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_crit_damage")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.power)
-                            StatText(buff:.CritDamage)
-                        }
-                        Spacer()
-                    }
-                }
-                VStack {
-                    HStack {
-                        Image("cooldown")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_cooldown")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.armor)
-                            StatText(buff:.CoolDownReduction)
-                        }
-                        Spacer()
-                    }
-                    HStack {
-                        Image("movespeed")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth:30)
-                        VStack {
-                            Text("main_movespeed")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.theme.armor)
-                            StatText(buff:.MoveSpeed)
-                        }
-                        Spacer()
-                    }
+                HStack {
+                    Spacer()
+                    Text("Total")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(Color.theme.regular)
+                    Text("= (base stat + passive bonuses + buffs bonuses)")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(Color.theme.regular.opacity(0.8))
+                    Spacer()
                 }
             }
-            .padding()
+            .padding(EdgeInsets(top: 10, leading: 16, bottom: 5, trailing: 16))
             .background(Color.theme.background)
             .lightBorder(cornerRadius: 5)
             
@@ -172,7 +184,8 @@ struct PlayerOverview: View {
             
             Spacer()
         }
-        .frame(height:155)
+        
+        .frame(height:175)
         .padding()
         .background(Color.theme.regular.opacity(0.1))
         .lightBorder(cornerRadius: 10)
@@ -184,11 +197,13 @@ struct StatText: View {
     
     @EnvironmentObject var gm: GameModel
     
-    var buff: Buff.Stat
+    var buff: Stat
     
-    var base: Double { gm.getBaseStat(buff)}
-    var bonus: Double { gm.getPassiveBonus(buff)}
-    var total: Double { base + bonus }
+    var base: Double { gm.getBaseStat(buff) }
+    var bonus: Double { gm.getPassiveBonus(buff) }
+    var effectBonus: Double { gm.getEffectsBonus(buff) }
+    var total: Double { base + bonus + effectBonus }
+    
     
     
     var body: some View {
@@ -196,7 +211,7 @@ struct StatText: View {
             Text(String(Int(total)))
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(Color.theme.regular)
-            Text(" (\(Int(base)) + \(Int(bonus)) )")
+            Text(" (\(Int(base)) + \(Int(bonus)) + \(Int(effectBonus)))")
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundColor(Color.theme.regular.opacity(0.8))
         }
@@ -211,7 +226,7 @@ struct PlayerOverview_Previews: PreviewProvider {
                 .ignoresSafeArea()
             PlayerOverview()
         }
-        .environmentObject(GameModel())
+        .environmentObject(GameModel.standard)
         .environmentObject(OverviewViewModel())
     }
 }

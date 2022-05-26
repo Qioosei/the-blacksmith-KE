@@ -10,8 +10,12 @@ import Combine
 
 class GameModel: ObservableObject {
     
+    
+    static let standard: GameModel = GameModel()
+    
     @Published var player: Player
     @Published var build: Build
+    
     var weapon: Weapon {
         return build.weapon
     }
@@ -38,7 +42,7 @@ class GameModel: ObservableObject {
 //        return getInGameStat(.Armor)
     //    }
     
-    func getBaseStat(_ buff: Buff.Stat) -> Double {
+    func getBaseStat(_ buff: Stat) -> Double {
         
         var stat: Double = 0
         switch(buff) {
@@ -56,29 +60,45 @@ class GameModel: ObservableObject {
             stat = player.critDamage
         case .MoveSpeed:
             stat = player.moveSpeed
+        case .ExpBonus:
+            stat = player.expRate
         }
         return stat
     }
     
-    func getInGameStat(_ buff: Buff.Stat) -> Double {
+    func getInGameStat(_ buff: Stat) -> Double {
         
         let stat = self.getBaseStat(buff)
         let bonus = self.getPassiveBonus(stat, self.getPassiveMultiplier(buff))
         return stat + bonus
     }
     
-    func getPassiveBonus(_ buff: Buff.Stat) -> Double {
+    func getPassiveBonus(_ buff: Stat) -> Double {
         
-        if([Buff.Stat.Armor,Buff.Stat.Health,Buff.Stat.Power,Buff.Stat.MoveSpeed].contains(buff)) {
+        if([Stat.Armor,Stat.Health,Stat.Power,Stat.MoveSpeed].contains(buff)) {
             let stat = self.getBaseStat(buff)
             let multiplier = self.getPassiveMultiplier(buff)
             
             let calculatedStat: Double = stat * (multiplier/100)
-            print("\(buff.rawValue) passive bonus: \(calculatedStat) = \(stat) * (\(multiplier)/100)")
+//            print("\(buff.rawValue) passive bonus: \(calculatedStat) = \(stat) * (\(multiplier)/100)")
             return calculatedStat
         }
         else {
             return self.getPassiveMultiplier(buff)
+        }
+    }
+    
+    func getEffectsBonus(_ buff: Stat) -> Double {
+        if([Stat.Armor,Stat.Health,Stat.Power,Stat.MoveSpeed].contains(buff)) {
+            let stat = self.getBaseStat(buff)
+            let multiplier = self.getEffectsMultiplier(buff)
+            
+            let calculatedStat: Double = stat * (multiplier / 100)
+            print("\(buff.rawValue) effects bonus: \(calculatedStat) = \(stat) * (\(multiplier)/100)")
+            
+            return calculatedStat
+        } else {
+            return self.getEffectsMultiplier(buff)
         }
     }
     
@@ -88,7 +108,7 @@ class GameModel: ObservableObject {
         return calculatedStat
     }
     
-    func getPassiveMultiplier(_ buff: Buff.Stat) -> Double {
+    func getPassiveMultiplier(_ buff: Stat) -> Double {
         var multiplier: Double = 0
         var passiveRunes: [Rune] = build.offenseRunes.filter ({ $0.passive.stat == buff })
         passiveRunes.append(contentsOf:build.defenseRunes.filter({$0.passive.stat == buff}))
@@ -96,11 +116,36 @@ class GameModel: ObservableObject {
         for rune: Rune in passiveRunes {
             multiplier += Double(rune.level) * rune.passive.value
         }
-        print("\(buff.rawValue) = \(multiplier)")
+//        print("\(buff.rawValue) = \(multiplier)")
         return multiplier
     }
     
-    init() {
+    
+    func getEffectsMultiplier(_ buff: Stat) -> Double {
+        var multiplier: Double = 0
+        
+        for rune in build.runes {
+            
+            for effect in rune.effectsForStat(buff) {
+                for stack in effect.stackForStat(buff) {
+                    let increment = (stack.baseValue + Double(rune.effectLevel) * stack.levelIncrement) * Double(effect.currentCount)
+//                    print("\(effect.name) adding (\(stack.baseValue) + \(Double(rune.effectLevel)) * \(stack.levelIncrement)) * \(Double(effect.currentCount)) = \(increment)")
+                    multiplier += increment
+                }
+            }
+        }
+        
+//        print("effects \(buff.rawValue) = \(multiplier)")
+        return multiplier
+    }
+    
+    private init() {
+        
+        if(PreferenceStore.ResetStore) {
+            print("Clearing store")
+            PreferenceStore.cleanStore()
+        }
+        
         self.player = Player()
         let lastBuild = PreferenceStore.lastBuild
         
@@ -115,21 +160,50 @@ class GameModel: ObservableObject {
     }
     
     
+    // TODO: follow statstackbuff model so we don't decode this every time we access it.
     static let PassiveBuffs: [Buff] = Bundle.main.decode("PassiveBuff.json")
+    
+    var runes: [Rune] = GameModel.loadRunes()
+    
+    static func loadRunes() -> [Rune] {
+        
+        let lastRunesLoaded = PreferenceStore.lastRunesVersion
+        let currentRunesVersion = Bundle.main.object(forInfoDictionaryKey: "RunesVersion") as! String?
+        if let currentVersion = currentRunesVersion {
+            print("current \(currentVersion) / last \(lastRunesLoaded)")
+            if((lastRunesLoaded < Int(currentVersion) ?? 0) || Int(currentVersion) == 0) {
+                print("lastLoad < currentVersion")
+                PreferenceStore.lastRunesVersion = Int(currentVersion) ?? 0
+                print("loading runes from json")
+                let runes = GameModel.Runes
+                PreferenceStore.Runes = runes
+                return runes
+            } else {
+                let runes = PreferenceStore.Runes
+                // Load from preference store
+                print("loading runes from prefstore")
+                return runes
+            }
+        }
+        print("runes loading error")
+        return [Rune]()
+    }
+    // TODO: follow statstackbuff model so we don't decode this every time we access it.
     static let Runes: [Rune] = Bundle.main.decode("Runes.json")
     
+    
     static func RuneWithID( id: String) -> Rune {
-        if let rune: Rune = GameModel.Runes.first(where: {$0.id == id}){
+        if let rune: Rune = GameModel.standard.runes.first(where: {$0.id == id}){
             return rune
         }
         return Rune_Sample.EmptyOffense
     }
     
     static func OffenseRunes() -> [Rune] {
-        return GameModel.Runes.filter({ $0.type == .Offense})
+        return GameModel.standard.runes.filter({ $0.type == .Offense})
     }
     static func DefenseRunes() -> [Rune] {
-        return GameModel.Runes.filter({ $0.type == .Defense})
+        return GameModel.standard.runes.filter({ $0.type == .Defense})
     }
     
     static func OffenseSample() -> [Rune] {
@@ -153,5 +227,8 @@ class GameModel: ObservableObject {
         let calculatedStat: Double = Double(pow(Double(1.02),Double(level))) * base
         return round(calculatedStat)
     }
+    
+    
+    
     
 }

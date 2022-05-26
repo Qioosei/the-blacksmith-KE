@@ -54,3 +54,11 @@ extension View {
         .shadow(color: .black, radius: 1, x: 0, y: 0)
     }
 }
+
+extension UserDefaults {
+
+    func valueExists(forKey key: String) -> Bool {
+        return object(forKey: key) != nil
+    }
+
+}

@@ -2,37 +2,37 @@
 [
     {
         "id": "CC",
-        "rawStat": "CritChance",
+        "stat": "CritChance",
         "value": 1
     },
     {
         "id": "CR",
-        "rawStat": "CoolDownReduction",
+        "stat": "CoolDownReduction",
         "value": 1
     },
     {
         "id": "AR",
-        "rawStat": "Armor",
+        "stat": "Armor",
         "value": 1.5
     },
     {
         "id": "PW",
-        "rawStat": "Power",
+        "stat": "Power",
         "value": 1
     },
     {
         "id": "MS",
-        "rawStat": "MoveSpeed",
+        "stat": "MoveSpeed",
         "value": 2
     },
     {
         "id": "HP",
-        "rawStat": "Health",
+        "stat": "Health",
         "value": 2
     },
     {
         "id": "CD",
-        "rawStat": "CritDamage",
+        "stat": "CritDamage",
         "value": 2.5
     }
     
